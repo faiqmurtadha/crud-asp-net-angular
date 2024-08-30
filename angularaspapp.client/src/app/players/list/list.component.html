@@ -1,0 +1,56 @@
+<div class="main-content">
+  <div class="row d-flex">
+    <div class="col">
+      <h3>Player Data</h3>
+    </div>
+    <div class="col">
+      <div class="d-flex justify-content-end">
+        <button mat-flat-button color="primary" (click)="createPlayer()">
+          <mat-icon  class="icon-responsive">add</mat-icon>
+          Add Player
+        </button>
+      </div>
+    </div>
+  </div>
+  <div class="table-data" *ngIf="players && players.length > 0">
+    <table mat-table [dataSource]="players" class="mat-elevation-z8">
+      <ng-container matColumnDef="name">
+        <th mat-header-cell *matHeaderCellDef>Name</th>
+        <td mat-cell *matCellDef="let player">{{player.name}}</td>
+      </ng-container>
+      <ng-container matColumnDef="position">
+        <th mat-header-cell *matHeaderCellDef>Position</th>
+        <td mat-cell *matCellDef="let player">{{player.position?.name}}</td>
+      </ng-container>
+      <ng-container matColumnDef="shirtNo">
+        <th mat-header-cell *matHeaderCellDef>Shirt No</th>
+        <td mat-cell *matCellDef="let player">{{player.shirtNo}}</td>
+      </ng-container>
+      <ng-container matColumnDef="appearances">
+        <th mat-header-cell *matHeaderCellDef>Appearances</th>
+        <td mat-cell *matCellDef="let player">{{player.appearances}}</td>
+      </ng-container>
+      <ng-container matColumnDef="goals">
+        <th mat-header-cell *matHeaderCellDef>Goals</th>
+        <td mat-cell *matCellDef="let player">{{player.goals}}</td>
+      </ng-container>
+      <ng-container matColumnDef="actions">
+        <th mat-header-cell *matHeaderCellDef class="text-center">Actions</th>
+        <td mat-cell *matCellDef="let player" class="text-center">
+          <button mat-icon-button color="primary" (click)="detailPlayer(player.id)">
+            <mat-icon class="icon-responsive">visibility</mat-icon>
+          </button>
+          <button mat-icon-button color="primary" (click)="editPlayer(player.id)">
+            <mat-icon class="icon-responsive">edit</mat-icon>
+          </button>
+          <button mat-icon-button color="primary" (click)="deletePlayer(player.id)">
+            <mat-icon class="icon-responsive">delete</mat-icon>
+          </button>
+        </td>
+      </ng-container>
+
+      <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+      <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+    </table>
+  </div>
+</div>

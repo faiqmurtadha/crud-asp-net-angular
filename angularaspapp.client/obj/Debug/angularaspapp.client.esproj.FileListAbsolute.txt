@@ -1,0 +1,1 @@
+C:\Users\Administrator\source\repos\AngularASPApp\angularaspapp.client\obj\Debug\angularaspapp.client.esproj.CoreCompileInputs.cache
